@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>Healthsmith</title>
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo2.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo2.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo2.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script>
+        function checkDate() {
+            var selectedText = document.getElementById('datepicker').value;
+            var selectedDate = new Date(selectedText);
+            var now = new Date();
+            if (selectedDate < now) {
+                alert("Date must be in the future");
+            }
+        }
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119386393-1');
+    </script>
+    <style>
+        .btn-primary:not(:disabled):not(.disabled).active,
+        .btn-primary:not(:disabled):not(.disabled):active,
+        .show>.btn-primary.dropdown-toggle {
+            color: #fff;
+            background-color: #f4bc1d !important;
+            border-color: #f4bc1d !important;
+        }
+
+        .btn-primary:not(:disabled):not(.disabled),
+        .btn-primary:not(:disabled):not(.disabled),
+        .show>.btn-primary.dropdown-toggle {
+            color: #fff;
+            background-color: #f12828 !important;
+            border-color: #f12828 !important;
+        }
+
+        .mbtn {
+            background-color: #f4bc1d;
+            color: white;
+            /* border: 2px solid red; */
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-weight: 500;
+        }
+
+        form#add-event {
+            width: 700px !important;
+        }
+
+        .modal-content {
+            width: 700px !important;
+        }
+
+        @media only screen and (max-width: 600px) {
+            form#add-event {
+                width: 330px !important;
+            }
+
+            .modal-content {
+                width: 330px !important;
+            }
+        }
+
+        @media only screen and (max-width: 769px) and (min-width: 601px) {
+            form#add-event {
+                width: 530px !important;
+            }
+
+            .modal-content {
+                width: 530px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mobile-menu-overlay"></div>
+
+    <div class="main-container">
+        <div class="pd-20 card-box mb-30">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-4">
+                     <h6>Pastint Name: <span>person</span> </h6>
+                     <p>Address: <span></span> </p>
+
+                  </div>
+                  <div class="col-md-4">
+                 
+                </div>
+                <div class="col-md-4">
+                    <h6>BALANCE DUE  </h6>
+                    <p>Upon Receipt</p>
+                    <h4 class="text-danger">$0.00</h4>
+                </div>
+              </div>
+
+          </div>
+        
+          
+        </div>
+        <!-- Bordered table  start -->
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix mb-20">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Bill page </h4>
+                    
+                </div>
+
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Item Description</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Balance</th>
+                        <th scope="col">Total</th>
+                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                       
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                      
+                    </tr>
+                    <tr class="table-dark">
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                      
+                    </tr>
+                    <tr class="table-info">
+                        <th scope="row">3</th>
+                        <td></td>
+                        <td>Total</td>
+                        <td><h4 class="text-danger">$0.00</h4></td>
+                  
+                    </tr>
+                </tbody>
+            </table>
+         
+        </div>
+        <!-- Bordered table End -->
+     
+    </div>
+
+    <script src="vendors/scripts/core.js"></script>
+    <script src="vendors/scripts/script.min.js"></script>
+    <script src="vendors/scripts/process.js"></script>
+    <script src="vendors/scripts/layout-settings.js"></script>
+    <script src="src/plugins/apexcharts/apexcharts.min.js"></script>
+    <script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script src="vendors/scripts/dashboard.js"></script>
+
+</body>
+
+</html>

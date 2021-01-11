@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic Page Info -->
+  <meta charset="utf-8">
+  <title>Healthsmith</title>
+
+  <!-- Site favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo2.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo2.png">
+
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- CSS -->
+  <link href='./lib/main.css' rel='stylesheet' />
+  <link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+  <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+  <link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+  <script>
+    $(function () {
+      $('.chosen-select').chosen();
+      $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+    });
+  </script>
+  <script>
+    function checkDate() {
+      var selectedText = document.getElementById('datepicker').value;
+      var selectedDate = new Date(selectedText);
+      var now = new Date();
+      if (selectedDate < now) {
+        alert("Date must be in the future");
+      }
+    }
+  </script>
+
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119386393-1');
+  </script>
+
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .ap {
+      border: grey 1px solid;
+      width: 100px;
+      text-align: center;
+      background-color: black;
+      color: white;
+      float: left;
+      transition: all 0.5s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI';
+    }
+
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show>.btn-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #f4bc1d !important;
+      border-color: #f4bc1d !important;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled),
+    .btn-primary:not(:disabled):not(.disabled),
+    .show>.btn-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #f12828 !important;
+      border-color: #f12828 !important;
+    }
+
+    .mbtn {
+      background-color: #f4bc1d;
+      color: white;
+      /* border: 2px solid red; */
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-weight: 500;
+    }
+
+    form#add-event {
+      width: 700px !important;
+    }
+
+    .modal-content {
+      width: 700px !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+      form#add-event {
+        width: 330px !important;
+      }
+
+      .modal-content {
+        width: 330px !important;
+      }
+    }
+
+    @media only screen and (max-width: 769px) and (min-width: 601px) {
+      form#add-event {
+        width: 530px !important;
+      }
+
+      .modal-content {
+        width: 530px !important;
+      }
+    }
+
+
+
+    /* dropdown select style */
+    .chosen-select {
+      width: 100%;
+    }
+
+    .chosen-select-deselect {
+      width: 100%;
+    }
+
+    .chosen-container {
+      display: inline-block;
+      font-size: 14px;
+      position: relative;
+      vertical-align: middle;
+    }
+
+    .chosen-container .chosen-drop {
+      background: #ffffff;
+      border: 1px solid #cccccc;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-box-shadow: 0 8px 8px rgba(0, 0, 0, .25);
+      box-shadow: 0 8px 8px rgba(0, 0, 0, .25);
+      margin-top: -1px;
+      position: absolute;
+      top: 100%;
+      left: -9000px;
+      z-index: 1060;
+    }
+
+    .chosen-container.chosen-with-drop .chosen-drop {
+      left: 0;
+      right: 0;
+    }
+
+    .chosen-container .chosen-results {
+      color: #555555;
+      margin: 0 4px 4px 0;
+      max-height: 240px;
+      padding: 0 0 0 4px;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .chosen-container .chosen-results li {
+      display: none;
+      line-height: 1.42857143;
+      list-style: none;
+      margin: 0;
+      padding: 5px 6px;
+    }
+
+    .chosen-container .chosen-results li em {
+      background: #feffde;
+      font-style: normal;
+    }
+
+    .chosen-container .chosen-results li.group-result {
+      display: list-item;
+      cursor: default;
+      color: #999;
+      font-weight: bold;
+    }
+
+    .chosen-container .chosen-results li.group-option {
+      padding-left: 15px;
+    }
+
+    .chosen-container .chosen-results li.active-result {
+      cursor: pointer;
+      display: list-item;
+    }
+
+    .chosen-container .chosen-results li.highlighted {
+      background-color: #428bca;
+      background-image: none;
+      color: white;
+    }
+
+    .chosen-container .chosen-results li.highlighted em {
+      background: transparent;
+    }
+
+    .chosen-container .chosen-results li.disabled-result {
+      display: list-item;
+      color: #777777;
+    }
+
+    .chosen-container .chosen-results .no-results {
+      background: #eeeeee;
+      display: list-item;
+    }
+
+    .chosen-container .chosen-results-scroll {
+      background: white;
+      margin: 0 4px;
+      position: absolute;
+      text-align: center;
+      width: 321px;
+      z-index: 1;
+    }
+
+    .chosen-container .chosen-results-scroll span {
+      display: inline-block;
+      height: 1.42857143;
+      text-indent: -5000px;
+      width: 9px;
+    }
+
+    .chosen-container .chosen-results-scroll-down {
+      bottom: 0;
+    }
+
+    .chosen-container .chosen-results-scroll-down span {
+      background: url("chosen-sprite.png") no-repeat -4px -3px;
+    }
+
+    .chosen-container .chosen-results-scroll-up span {
+      background: url("chosen-sprite.png") no-repeat -22px -3px;
+    }
+
+    .chosen-container-single .chosen-single {
+      background-color: #ffffff;
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+      border: 1px solid #cccccc;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      color: #555555;
+      display: block;
+      height: 34px;
+      overflow: hidden;
+      line-height: 34px;
+      padding: 0 0 0 8px;
+      position: relative;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .chosen-container-single .chosen-single span {
+      display: block;
+      margin-right: 26px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .chosen-container-single .chosen-single abbr {
+      background: url("chosen-sprite.png") right top no-repeat;
+      display: block;
+      font-size: 1px;
+      height: 10px;
+      position: absolute;
+      right: 26px;
+      top: 12px;
+      width: 12px;
+    }
+
+    .chosen-container-single .chosen-single abbr:hover {
+      background-position: right -11px;
+    }
+
+    .chosen-container-single .chosen-single.chosen-disabled .chosen-single abbr:hover {
+      background-position: right 2px;
+    }
+
+    .chosen-container-single .chosen-single div {
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 18px;
+    }
+
+    .chosen-container-single .chosen-single div b {
+      background: url("chosen-sprite.png") no-repeat 0 7px;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .chosen-container-single .chosen-default {
+      color: #777777;
+    }
+
+    .chosen-container-single .chosen-search {
+      margin: 0;
+      padding: 3px 4px;
+      position: relative;
+      white-space: nowrap;
+      z-index: 1000;
+    }
+
+    .chosen-container-single .chosen-search input[type="text"] {
+      background: url("chosen-sprite.png") no-repeat 100% -20px, #ffffff;
+      border: 1px solid #cccccc;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      margin: 1px 0;
+      padding: 4px 20px 4px 4px;
+      width: 100%;
+    }
+
+    .chosen-container-single .chosen-drop {
+      margin-top: -1px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+    }
+
+    .chosen-container-single-nosearch .chosen-search input {
+      position: absolute;
+      left: -9000px;
+    }
+
+    .chosen-container-multi .chosen-choices {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      cursor: text;
+      height: auto !important;
+      height: 1%;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+    }
+
+    .chosen-container-multi .chosen-choices li {
+      float: left;
+      list-style: none;
+    }
+
+    .chosen-container-multi .chosen-choices .search-field {
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    .chosen-container-multi .chosen-choices .search-field input[type="text"] {
+      background: transparent !important;
+      border: 0 !important;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      color: #555555;
+      height: 32px;
+      margin: 0;
+      padding: 4px;
+      outline: 0;
+    }
+
+    .chosen-container-multi .chosen-choices .search-field .default {
+      color: #999;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice {
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+      background-color: #eeeeee;
+      border: 1px solid #cccccc;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      background-image: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+      background-image: -o-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+      background-image: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      color: #333333;
+      cursor: default;
+      line-height: 13px;
+      margin: 6px 0 3px 5px;
+      padding: 3px 20px 3px 5px;
+      position: relative;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice .search-choice-close {
+      background: url("chosen-sprite.png") right top no-repeat;
+      display: block;
+      font-size: 1px;
+      height: 10px;
+      position: absolute;
+      right: 4px;
+      top: 5px;
+      width: 12px;
+      cursor: pointer;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice .search-choice-close:hover {
+      background-position: right -11px;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice-focus {
+      background: #d4d4d4;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice-focus .search-choice-close {
+      background-position: right -11px;
+    }
+
+    .chosen-container-multi .chosen-results {
+      margin: 0 0 0 0;
+      padding: 0;
+    }
+
+    .chosen-container-multi .chosen-drop .result-selected {
+      display: none;
+    }
+
+    .chosen-container-active .chosen-single {
+      border: 1px solid #66afe9;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      -webkit-transition: border linear .2s, box-shadow linear .2s;
+      -o-transition: border linear .2s, box-shadow linear .2s;
+      transition: border linear .2s, box-shadow linear .2s;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-single {
+      background-color: #ffffff;
+      border: 1px solid #66afe9;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      -webkit-transition: border linear .2s, box-shadow linear .2s;
+      -o-transition: border linear .2s, box-shadow linear .2s;
+      transition: border linear .2s, box-shadow linear .2s;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-single div {
+      background: transparent;
+      border-left: none;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-single div b {
+      background-position: -18px 7px;
+    }
+
+    .chosen-container-active .chosen-choices {
+      border: 1px solid #66afe9;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      -webkit-transition: border linear .2s, box-shadow linear .2s;
+      -o-transition: border linear .2s, box-shadow linear .2s;
+      transition: border linear .2s, box-shadow linear .2s;
+    }
+
+    .chosen-container-active .chosen-choices .search-field input[type="text"] {
+      color: #111 !important;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-choices {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .chosen-disabled {
+      cursor: default;
+      opacity: 0.5 !important;
+    }
+
+    .chosen-disabled .chosen-single {
+      cursor: default;
+    }
+
+    .chosen-disabled .chosen-choices .search-choice .search-choice-close {
+      cursor: default;
+    }
+
+    .chosen-rtl {
+      text-align: right;
+    }
+
+    .chosen-rtl .chosen-single {
+      padding: 0 8px 0 0;
+      overflow: visible;
+    }
+
+    .chosen-rtl .chosen-single span {
+      margin-left: 26px;
+      margin-right: 0;
+      direction: rtl;
+    }
+
+    .chosen-rtl .chosen-single div {
+      left: 7px;
+      right: auto;
+    }
+
+    .chosen-rtl .chosen-single abbr {
+      left: 26px;
+      right: auto;
+    }
+
+    .chosen-rtl .chosen-choices .search-field input[type="text"] {
+      direction: rtl;
+    }
+
+    .chosen-rtl .chosen-choices li {
+      float: right;
+    }
+
+    .chosen-rtl .chosen-choices .search-choice {
+      margin: 6px 5px 3px 0;
+      padding: 3px 5px 3px 19px;
+    }
+
+    .chosen-rtl .chosen-choices .search-choice .search-choice-close {
+      background-position: right top;
+      left: 4px;
+      right: auto;
+    }
+
+    .chosen-rtl.chosen-container-single .chosen-results {
+      margin: 0 0 4px 4px;
+      padding: 0 4px 0 0;
+    }
+
+    .chosen-rtl .chosen-results .group-option {
+      padding-left: 0;
+      padding-right: 15px;
+    }
+
+    .chosen-rtl.chosen-container-active.chosen-with-drop .chosen-single div {
+      border-right: none;
+    }
+
+    .chosen-rtl .chosen-search input[type="text"] {
+      background: url("chosen-sprite.png") no-repeat -28px -20px, #ffffff;
+      direction: rtl;
+      padding: 4px 5px 4px 20px;
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 144dpi) {
+
+      .chosen-rtl .chosen-search input[type="text"],
+      .chosen-container-single .chosen-single abbr,
+      .chosen-container-single .chosen-single div b,
+      .chosen-container-single .chosen-search input[type="text"],
+      .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
+      .chosen-container .chosen-results-scroll-down span,
+      .chosen-container .chosen-results-scroll-up span {
+        background-image: url("chosen-sprite@2x.png") !important;
+        background-size: 52px 37px !important;
+        background-repeat: no-repeat !important;
+      }
+    }
+
+    option {
+      margin: 0.5em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+      <div class="min-height-200px">
+        <div class="page-header">
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <!-- <div class="title">
+								<h4>Calendar</h4>
+							</div> -->
+              <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <form id="add-event" method="post" action="{% url 'appointment_form' %}">
+                      {% csrf_token %}
+                      <div class="modal-body">
+                        <h4 class="text-danger h4 mb-10">Patient Information</h4>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Patient Name</label>
+                            <input type="text" class="form-control" name="patient_name" required>
+                          </div>
+                          <div class="col-md-6">
+                            <label>Patient Code</label>
+                            <input type="text" class="form-control" name="patient_code" required>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Created By</label>
+                              <input type="text" class="form-control" name="created_by" required>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Contact Number</label>
+                              <input type="text" class="form-control" name="created_by" required>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <h4 class="text-danger h4 mb-10">Appointment Information</h4>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Appointment On</label>
+                              <input type='datetime-local' id="birthdaytime" onchange="checkDate()" class="form-control"
+                                name="event_date" required>
+                              <!-- <input id="datepicker" onchange="checkDate()" required class="datepicker-input" type="date" data-date-format="yyyy-mm-dd" > -->
+                              <!--                                                         <input type="datetime-local" id="birthdaytime" name="birthdaytime">-->
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+
+                            <div class="form-group">
+                              <label>Type Of Appointment</label>
+                              <select class="form-control" name="type_of_appointment" required>
+                                <option value="first">First</option>
+                                <option value="followup">Follow-Up</option>
+                                <!--                                                        <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>-->
+
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Doctors Name</label>
+                              <input type="text" class="form-control" name="doctors_name" required>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Specialty</label>
+                              <input type="text" class="form-control" name="specialty" required>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                         
+                          <div class="col-md-6">
+                            <label> Select State</label>
+                            <select class="form-control" name="select1" id="select1">
+                              <option value="">Select state</option>
+                              <option value="1">Andra Pradesh</option>
+                              <option value="2">Telangana</option>
+
+                            </select>
+                          </div>
+                          <div class="col-md-6">
+                            <label> choose city</label>
+                            <select class="form-control" name="select2" id="select2">
+                              <option value="1"></option>
+                              <option value="1">Adoni</option>
+                              <option value="1">Akkarampalle</option>
+                              <option value="1">Amadalavalasa (Amudalavalasa)</option>
+                              <option value="1">Amalapuram</option>
+                              <option value="1">Anakapalle</option>
+                              <option value="1">Anantapur</option>
+                              <option value="1">Arempudi</option>
+                              <option value="1">Avilala</option>
+                              <option value="1">Badvel</option>
+                              <option value="1">Balaga</option>
+                              <option value="1">Banaganapalle (Banganapalle)</option>
+                              <option value="1">Bandarulanka</option>
+                              <option value="1">Banumukkala</option>
+                              <option value="1">Bapatla</option>
+                              <option value="1">Bethamcherla</option>
+                              <option value="1">Bheemunipatnam</option>
+                              <option value="1">Bhimavaram</option>
+                              <option value="1">Bobbili</option>
+                              <option value="1">Bowluvada</option>
+                              <option value="1">Nellore</option>
+                              <option value="1">Cheepurupalle</option>
+                              <option value="1">Chennamukkapalle</option>
+                              <option value="1">Cherlopalle</option>
+                              <option value="1">Chidiga</option>
+                              <option value="1">Chilakaluripet</option>
+                              <option value="1">Chintalavalasa</option>
+                              <option value="1">Chintapalle</option>
+                              <option value="1">Chirala</option>
+                              <option value="1">Chittoor</option>
+                              <option value="1">Chodavaram</option>
+                              <option value="1">Cumbum</option>
+                              <option value="1">Dharmavaram</option>
+                              <option value="1">Dronachalam</option>
+                              <option value="1">Dommara Nandyala</option>
+                              <option value="1">Dowleswaram</option>
+                              <option value="1">Dwarakatirumala</option>
+                              <option value="1">Eluru</option>
+                              <option value="1">Gajapathinagaram</option>
+                              <option value="1">Gavaravaram</option>
+                              <option value="1">Giddaluru</option>
+                              <option value="1">Gooty</option>
+                              <option value="1">Gopavaram</option>
+                              <option value="1">Gudivada</option>
+                              <option value="1">Gudivada</option>
+                              <option value="1">Gudur</option>
+                              <option value="1">Guntakal</option>
+                              <option value="1">Guntupalle</option>
+                              <option value="1">Guntur</option>
+                              <option value="1">Hindupur</option>
+                              <option value="1">Hiramandalam</option>
+                              <option value="1">Hukumpeta</option>
+                              <option value="1">Ibrahimpatnam</option>
+                              <option value="1">Ichchapuram</option>
+                              <option value="1">Jaggaiahpet (Jaggayyapeta)</option>
+                              <option value="1">Jammalamadugu</option>
+                              <option value="1">Jarjapupeta</option>
+                              <option value="1">Kadapa (Cuddapah)</option>
+                              <option value="1">Kadiri</option>
+                              <option value="1">Kakinada</option>
+                              <option value="1">Kakkalapalle</option>
+                              <option value="1">Kalyandurg</option>
+                              <option value="1">Kanapaka</option>
+                              <option value="1">Kandukur</option>
+                              <option value="1">Kanigiri U</option>
+                              <option value="1">Kankipadu</option>
+                              <option value="1">Kantabamsuguda</option>
+                              <option value="1">Kanuru</option>
+                              <option value="1">Katheru</option>
+                              <option value="1">Kavali</option>
+                              <option value="1">Kondapalle (Kondapalli)</option>
+                              <option value="1">Kothavalasa</option>
+                              <option value="1">Kovvur</option>
+                              <option value="1">Kuppam</option>
+                              <option value="1">Kurnool (incl. Kallur)</option>
+                              <option value="1">L.A.Sagaram</option>
+                              <option value="1">Macherla</option>
+                              <option value="1">Machilipatnam</option>
+                              <option value="1">Madanapalle</option>
+                              <option value="1">Malicherla</option>
+                              <option value="1">Mamidalapadu</option>
+                              <option value="1">Mandapeta</option>
+                              <option value="1">Mangalagiri</option>
+                              <option value="1">Mangalam</option>
+                              <option value="1">Mangampeta</option>
+                              <option value="1">Mangasamudram</option>
+                              <option value="1">Markapur</option>
+                              <option value="1">Modameedipalle</option>
+                              <option value="1">Moragudi</option>
+                              <option value="1">Morampudi</option>
+                              <option value="1">Muddanur</option>
+                              <option value="1">Mulaguntapadu</option>
+                              <option value="1">Mulakuddu</option>
+                              <option value="1">Murakambattu</option>
+                              <option value="1">Nadim Tiruvuru</option>
+                              <option value="1">Nagari</option>
+                              <option value="1">Nagireddipalle</option>
+                              <option value="1">Nakkapalle</option>
+                              <option value="1">Nandyal</option>
+                              <option value="1">Narasannapeta</option>
+                              <option value="1">Narasapur</option>
+                              <option value="1">Narasaraopet</option>
+                              <option value="1">Narayanapuram</option>
+                              <option value="1">Narayanavanam</option>
+                              <option value="1">Narsipatnam</option>
+                              <option value="1">Nellimarla</option>
+                              <option value="1">Nellore</option>
+                              <option value="1">Nidadavole (Nidadavolu)</option>
+                              <option value="1">Nuzvid</option>
+                              <option value="1">Ongole</option>
+                              <option value="1">Palacole (Palakollu)</option>
+                              <option value="1">Palakonda</option>
+                              <option value="1">Palamaner</option>
+                              <option value="1">Palasa Kasibugga</option>
+                              <option value="1">Pamur</option>
+                              <option value="1">Papampeta</option>
+                              <option value="1">Parvathipuram</option>
+                              <option value="1">Payakaraopeta</option>
+                              <option value="1">Peda Boddepalle</option>
+                              <option value="1">Pedana</option>
+                              <option value="1">Peddapuram</option>
+                              <option value="1">Perur</option>
+                              <option value="1">Piduguralla</option>
+                              <option value="1">Pileru</option>
+                              <option value="1">Pithapuram</option>
+                              <option value="1">Podili</option>
+                              <option value="1">Ponduru</option>
+                              <option value="1">Ponnur</option>
+                              <option value="1">Poranki</option>
+                              <option value="1">Prasadampadu</option>
+                              <option value="1">Proddatur</option>
+                              <option value="1">Pulivendla (Pulivendula)</option>
+                              <option value="1">Punganur</option>
+                              <option value="1">Puttur</option>
+                              <option value="1">Rajahmundry</option>
+                              <option value="1">Rajam</option>
+                              <option value="1">Rajampet</option>
+                              <option value="1">Ramachandrapuram</option>
+                              <option value="1">Ramanayyapeta</option>
+                              <option value="1">Ramapuram</option>
+                              <option value="1">Ramavarappadu</option>
+                              <option value="1">Rameswaram</option>
+                              <option value="1">Rampachodavaram</option>
+                              <option value="1">Rayachoti</option>
+                              <option value="1">Rayadurg</option>
+                              <option value="1">Renigunta</option>
+                              <option value="1">Repalle</option>
+                              <option value="1">Salur</option>
+                              <option value="1">Samalkot</option>
+                              <option value="1">Sanivarapupeta</option>
+                              <option value="1">Satrampadu</option>
+                              <option value="1">Sattenapalle</option>
+                              <option value="1">Singarayakonda</option>
+                              <option value="1">Somandepalle</option>
+                              <option value="1">Sompeta</option>
+                              <option value="1">Srikakulam</option>
+                              <option value="1">Srikalahasti</option>
+                              <option value="1">Sriramnagar</option>
+                              <option value="1">Srisailam </option>
+                              <option value="1">Sulluru (Sullurpeta)</option>
+                              <option value="1">Suryaraopeta</option>
+                              <option value="1">Tada Khandrika</option>
+                              <option value="1">Tadepalle</option>
+                              <option value="1">Tadepalligudem</option>
+                              <option value="1">Tadigadapa</option>
+                              <option value="1">Tadpatri (Tadipatri)</option>
+                              <option value="1">Tangellamudi</option>
+                              <option value="1">Tanuku</option>
+                              <option value="1">Tekkali</option>
+                              <option value="1">Tenali</option>
+                              <option value="1">Thummalamenta</option>
+                              <option value="1">Tiruchanur</option>
+                              <option value="1">Tirumala</option>
+                              <option value="1">Tirupati</option>
+                              <option value="1">Tirupati NMA</option>
+                              <option value="1">Tummikapalle</option>
+                              <option value="1">Tuni</option>
+                              <option value="1">Upper Sileru Project Site Camp</option>
+                              <option value="1">Uravakonda</option>
+                              <option value="1">Vaddeswaram</option>
+                              <option value="1">Venkatagiri</option>
+                              <option value="1">Veparala</option>
+                              <option value="1">Vetapalem</option>
+                              <option value="1">Vijayawada</option>
+                              <option value="1">Vinnamala</option>
+                              <option value="1">Vinukonda</option>
+                              <option value="1">Visakhapatnam [Vishakhapatnam]</option>
+                              <option value="1">Vizianagaram</option>
+                              <option value="1">Yelamanchili</option>
+                              <option value="1">Yemmiganur</option>
+                              <option value="1">Yenamalakuduru</option>
+                              <option value="1">Yenumalapalle</option>
+                              <option value="1">Yerrabalem</option>
+                              <option value="1">Yerraguntla</option>
+                              <option value="2"> </option>
+                              <option value="2"> Achampet</option>
+                              <option value="2">Adilabad</option>
+                              <option value="2">Allipur</option>
+                              <option value="2">Ameenapur</option>
+                              <option value="2">Annaram</option>
+                              <option value="2">Armur (Armoor)</option>
+                              <option value="2">Asifabad</option>
+                              <option value="2">Atmakur</option>
+                              <option value="2">Bachpalle</option>
+                              <option value="2">Badangpet</option>
+                              <option value="2">Badepalle</option>
+                              <option value="2">Ballepalle</option>
+                              <option value="2">Bandlaguda (Jagir)</option>
+                              <option value="2">Banswada</option>
+                              <option value="2">Bellampalle</option>
+                              <option value="2">Bhadrachalam</option>
+                              <option value="2">Bhainsa</option>
+                              <option value="2">Bhanur</option>
+                              <option value="2">Bhimaram</option>
+                              <option value="2">Bhongir</option>
+                              <option value="2">Bhupalpalle</option>
+                              <option value="2">Bibinagar</option>
+                              <option value="2">Bodhan</option>
+                              <option value="2">Boduppal</option>
+                              <option value="2">Bollaram (Bolarum)</option>
+                              <option value="2">Bonthapalle</option>
+                              <option value="2">Boyapalle</option>
+                              <option value="2">Chandur</option>
+                              <option value="2">Chegunta</option>
+                              <option value="2">Chennur</option>
+                              <option value="2">Chinnachintakunta</option>
+                              <option value="2">Chitkul</option>
+                              <option value="2">Chityala</option>
+                              <option value="2">Choutuppal</option>
+                              <option value="2">Chunchupalle</option>
+                              <option value="2">Dasnapur</option>
+                              <option value="2">Devapur</option>
+                              <option value="2">Devarakonda</option>
+                              <option value="2">Dharmaram (P.B)</option>
+                              <option value="2">Dornakal</option>
+                              <option value="2">Dundigal</option>
+                              <option value="2">Eddumailaram</option>
+                              <option value="2">Enumamula</option>
+                              <option value="2">Farooqnagar</option>
+                              <option value="2">Gadwal</option>
+                              <option value="2">Gajwel</option>
+                              <option value="2">Garimellapadu</option>
+                              <option value="2">Ghanpur</option>
+                              <option value="2">Ghanpur Station</option>
+                              <option value="2">Ghatkesar</option>
+                              <option value="2">Gorrekunta</option>
+                              <option value="2">Hyderabad</option>
+                              <option value="2">Ibrahimpatnam (Bagath)</option>
+                              <option value="2">Ichoda</option>
+                              <option value="2">Isnapur</option>
+                              <option value="2">Jadcherla</option>
+                              <option value="2">Jagtial</option>
+                              <option value="2">Jainoor</option>
+                              <option value="2">Jallaram</option>
+                              <option value="2">Jangaon</option>
+                              <option value="2">Jawaharnagar</option>
+                              <option value="2">Jillalguda (Jillelguda)</option>
+                              <option value="2">Jogipet</option>
+                              <option value="2">Kadipikonda</option>
+                              <option value="2">Kagaznagar (Kaghaznagar)</option>
+                              <option value="2">Kalwakurthy</option>
+                              <option value="2">Kamalapuram</option>
+                              <option value="2">Kamareddy</option>
+                              <option value="2">Karimnagar</option>
+                              <option value="2">Kasipet</option>
+                              <option value="2">Khammam</option>
+                              <option value="2">Khanapuram Haveli</option>
+                              <option value="2">Kismatpur</option>
+                              <option value="2">Kodad</option>
+                              <option value="2">Kompalle</option>
+                              <option value="2">Kondamallapalle</option>
+                              <option value="2">Koratla</option>
+                              <option value="2">Kothagudem</option>
+                              <option value="2">Kothakota</option>
+                              <option value="2">Kothapet</option>
+                              <option value="2">Kothur</option>
+                              <option value="2">Kyathampalle</option>
+                              <option value="2">Laxmidevipalle</option>
+                              <option value="2">Luxettipet</option>
+                              <option value="2">Madhira</option>
+                              <option value="2">Mahabubabad</option>
+                              <option value="2">Mahbubnagar </option>
+                              <option value="2">Mamnoor</option>
+                              <option value="2">Mancherial</option>
+                              <option value="2">Mandamarri</option>
+                              <option value="2">Manugur</option>
+                              <option value="2">Medak</option>
+                              <option value="2">Medchal</option>
+                              <option value="2">Medipalle</option>
+                              <option value="2">Meerpet</option>
+                              <option value="2">Metpalle</option>
+                              <option value="2">Miryalaguda</option>
+                              <option value="2">Muthangi</option>
+                              <option value="2">Nagaram</option>
+                              <option value="2">Nagarkurnool</option>
+                              <option value="2">Nakrekal</option>
+                              <option value="2">Nalgonda</option>
+                              <option value="2">Narayankhed</option>
+                              <option value="2">Narayanpet</option>
+                              <option value="2">Narsampet</option>
+                              <option value="2">Narsapur</option>
+                              <option value="2">Narsingi</option>
+                              <option value="2">Naspur</option>
+                              <option value="2">Navandgi</option>
+                              <option value="2">Nirmal</option>
+                              <option value="2">Nizamabad</option>
+                              <option value="2">Omerkhan Daira</option>
+                              <option value="2">Osmania University</option>
+                              <option value="2">Palakurthy</option>
+                              <option value="2">Palwancha</option>
+                              <option value="2">Peddapalle</option>
+                              <option value="2">Peerzadguda</option>
+                              <option value="2">Pochampalle (Bhoodan Pochampally)</option>
+                              <option value="2">Pothreddipalle</option>
+                              <option value="2">Raghunathpur</option>
+                              <option value="2">Ramachandrapuram </option>
+                              <option value="2">Ramagundam</option>
+                              <option value="2">Ramannapeta</option>
+                              <option value="2">Ratnapur</option>
+                              <option value="2">Rekurthi</option>
+                              <option value="2">Sadasivpet</option>
+                              <option value="2">Sangareddy (Sangareddi)</option>
+                              <option value="2">Sarapaka</option>
+                              <option value="2">Sathupalle</option>
+                              <option value="2">Secunderabad</option>
+                              <option value="2">
+                              <option value="2">Shamshabad</option>
+                              <option value="2">Shankarampet A</option>
+                              <option value="2">Shivunipalle</option>
+                              <option value="2">Siddipet</option>
+                              <option value="2">Siddipet</option>
+                              <option value="2">Singapur</option>
+                              <option value="2">Sircilla</option>
+                              <option value="2">Soanpet</option>
+                              <option value="2">Suryapet</option>
+                              <option value="2">Tandur</option>
+                              <option value="2">Tangapur</option>
+                              <option value="2">Teegalpahad</option>
+                              <option value="2">Thallapalle</option>
+                              <option value="2">Thimmapur</option>
+                              <option value="2">
+                              <option value="2">Thorrur</option>
+                              <option value="2">Turkayamjal</option>
+                              <option value="2">Utnur</option>
+                              <option value="2">Vatwarlapalle</option>
+                              <option value="2">Vemulawada R</option>
+                              <option value="2">Vicarabad (Vikarabad)</option>
+                              <option value="2">Vijayapuri North</option>
+                              <option value="2">Wanaparthy</option>
+                              <option value="2">Warangal</option>
+                              <option value="2">Yadagirigutta</option>
+                              <option value="2">Yellandu</option>
+                              <option value="2">Yellareddy</option>
+                              <option value="2">Yenugonda</option>
+                              <option value="2">Zahirabad (Zaheerabad)</option>
+
+
+                            </select>
+                          </div>
+                        </div>
+                      <br>
+
+
+                        <div class="row">
+                          <div class="col-md-3">
+                            <label>Appointment Status</label>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" value="pending" id="defaultInline1"
+                                name="appointment_status" required>
+                              <label class="custom-control-label" for="defaultInline1">Pending</label>
+                            </div>
+
+                          </div>
+                          <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" value=" completed" id="defaultInline2"
+                                name="appointment_status" required>
+                              <label class="custom-control-label" for="defaultInline2">completed</label>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" class="custom-control-input" value="cancelled" id="defaultInline3"
+                                name="appointment_status" required>
+                              <label class="custom-control-label" for="defaultInline3">Cancelled</label>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Appointment Purpose</label>
+                              <input type="text" class="form-control" name="appointment_purpose">
+                            </div>
+                          </div>
+
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Referral Made</label>
+                              <input type="text" class="form-control" name="referral_made">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Comments/Special instruction</label>
+                          <input type="text" class="form-control" name="comments_or_special_instructions">
+                        </div>
+
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-left">
+                <a href="" class="mbtn" data-toggle="modal" data-target="#modalLoginForm">Book your Event date</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="pd-20 card-box mb-30">
+          <div class="calendar-wrap">
+            <div id='calendar'></div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="footer-wrap pd-20 mb-20 card-box">
+        © Healthsmith 2020. All Rights Reserved
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+
+  <script src="vendors/scripts/core.js"></script>
+  <script src="vendors/scripts/script.min.js"></script>
+  <script src="vendors/scripts/process.js"></script>
+  <script src="vendors/scripts/layout-settings.js"></script>
+
+  <script src='./lib/main.js'></script>
+
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        headerToolbar: {
+          left: 'prevYear,prev,next,nextYear today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay'
+        },
+        initialDate: '2020-12-14',
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        dayMaxEvents: true, // allow "more" link when too many events
+        events: [
+          {
+            title: 'All Day Event',
+            start: '2020-09-01'
+          },
+          {
+            title: 'Long Event',
+            start: '2020-09-07',
+            end: '2020-09-10'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2020-09-09T16:00:00'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2020-09-16T16:00:00'
+          },
+          {
+            title: 'Conference',
+            start: '2020-09-11',
+            end: '2020-09-13'
+          },
+          {
+            title: 'Meeting',
+            start: '2020-09-12T10:30:00',
+            end: '2020-09-12T12:30:00'
+          },
+          {
+            title: 'Lunch',
+            start: '2020-09-12T12:00:00'
+          },
+          {
+            title: 'Meeting',
+            start: '2020-09-12T14:30:00'
+          },
+          {
+            title: 'Happy Hour',
+            start: '2020-09-12T17:30:00'
+          },
+          {
+            title: 'Dinner',
+            start: '2020-09-12T20:00:00'
+          },
+          {
+            title: 'Birthday Party',
+            start: '2020-09-13T07:00:00'
+          },
+          {
+            title: 'Click for Google',
+            url: 'http://google.com/',
+            start: '2020-09-28'
+          }
+        ]
+      });
+
+      calendar.render();
+    });
+
+  </script>
+
+  <script>
+    //Reference: https://jsfiddle.net/fwv18zo1/
+    var $select1 = $('#select1'),
+      $select2 = $('#select2'),
+      $options = $select2.find('option');
+
+    $select1.on('change', function () {
+      $select2.html($options.filter('[value="' + this.value + '"]'));
+    }).trigger('change');
+  </script>
+</body>
+
+</html>

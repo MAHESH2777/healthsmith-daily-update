@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+  <!-- Basic Page Info -->
+  <meta charset="utf-8">
+  <title>Healthsmith</title>
+
+  <!-- Site favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'home_page/vendors/images/logo2.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'home_page/vendors/images/logo2.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'home_page/vendors/images/logo2.png' %}">
+
+  <!-- Mobile Specific Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'home_page/vendors/styles/core.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'home_page/vendors/styles/icon-font.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'home_page/src/plugins/fullcalendar/fullcalendar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'home_page/vendors/styles/style.css' %}">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+  <script>
+    $(function () {
+      $('.chosen-select').chosen();
+      $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+    });
+  </script>
+  <script>
+    function checkDate() {
+      var selectedText = document.getElementById('datepicker').value;
+      var selectedDate = new Date(selectedText);
+      var now = new Date();
+      if (selectedDate < now) {
+        alert("Date must be in the future");
+      }
+    }
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119386393-1');
+  </script>
+  <style>
+    .btn-primary:not(:disabled):not(.disabled).active,
+    .btn-primary:not(:disabled):not(.disabled):active,
+    .show>.btn-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #f4bc1d !important;
+      border-color: #f4bc1d !important;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled),
+    .btn-primary:not(:disabled):not(.disabled),
+    .show>.btn-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #f12828 !important;
+      border-color: #f12828 !important;
+    }
+
+    .mbtn {
+      background-color: #f4bc1d;
+      color: white;
+      /* border: 2px solid red; */
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-weight: 500;
+    }
+
+    form#add-event {
+      width: 700px !important;
+    }
+
+    .modal-content {
+      width: 700px !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+      form#add-event {
+        width: 330px !important;
+      }
+
+      .modal-content {
+        width: 330px !important;
+      }
+    }
+
+    @media only screen and (max-width: 769px) and (min-width: 601px) {
+      form#add-event {
+        width: 530px !important;
+      }
+
+      .modal-content {
+        width: 530px !important;
+      }
+    }
+
+
+
+    /* dropdown select style */
+    .chosen-select {
+      width: 100%;
+    }
+
+    .chosen-select-deselect {
+      width: 100%;
+    }
+
+    .chosen-container {
+      display: inline-block;
+      font-size: 14px;
+      position: relative;
+      vertical-align: middle;
+    }
+
+    .chosen-container .chosen-drop {
+      background: #ffffff;
+      border: 1px solid #cccccc;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-box-shadow: 0 8px 8px rgba(0, 0, 0, .25);
+      box-shadow: 0 8px 8px rgba(0, 0, 0, .25);
+      margin-top: -1px;
+      position: absolute;
+      top: 100%;
+      left: -9000px;
+      z-index: 1060;
+    }
+
+    .chosen-container.chosen-with-drop .chosen-drop {
+      left: 0;
+      right: 0;
+    }
+
+    .chosen-container .chosen-results {
+      color: #555555;
+      margin: 0 4px 4px 0;
+      max-height: 240px;
+      padding: 0 0 0 4px;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .chosen-container .chosen-results li {
+      display: none;
+      line-height: 1.42857143;
+      list-style: none;
+      margin: 0;
+      padding: 5px 6px;
+    }
+
+    .chosen-container .chosen-results li em {
+      background: #feffde;
+      font-style: normal;
+    }
+
+    .chosen-container .chosen-results li.group-result {
+      display: list-item;
+      cursor: default;
+      color: #999;
+      font-weight: bold;
+    }
+
+    .chosen-container .chosen-results li.group-option {
+      padding-left: 15px;
+    }
+
+    .chosen-container .chosen-results li.active-result {
+      cursor: pointer;
+      display: list-item;
+    }
+
+    .chosen-container .chosen-results li.highlighted {
+      background-color: #428bca;
+      background-image: none;
+      color: white;
+    }
+
+    .chosen-container .chosen-results li.highlighted em {
+      background: transparent;
+    }
+
+    .chosen-container .chosen-results li.disabled-result {
+      display: list-item;
+      color: #777777;
+    }
+
+    .chosen-container .chosen-results .no-results {
+      background: #eeeeee;
+      display: list-item;
+    }
+
+    .chosen-container .chosen-results-scroll {
+      background: white;
+      margin: 0 4px;
+      position: absolute;
+      text-align: center;
+      width: 321px;
+      z-index: 1;
+    }
+
+    .chosen-container .chosen-results-scroll span {
+      display: inline-block;
+      height: 1.42857143;
+      text-indent: -5000px;
+      width: 9px;
+    }
+
+    .chosen-container .chosen-results-scroll-down {
+      bottom: 0;
+    }
+
+    .chosen-container .chosen-results-scroll-down span {
+      background: url("chosen-sprite.png") no-repeat -4px -3px;
+    }
+
+    .chosen-container .chosen-results-scroll-up span {
+      background: url("chosen-sprite.png") no-repeat -22px -3px;
+    }
+
+    .chosen-container-single .chosen-single {
+      background-color: #ffffff;
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+      border: 1px solid #cccccc;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      color: #555555;
+      display: block;
+      height: 34px;
+      overflow: hidden;
+      line-height: 34px;
+      padding: 0 0 0 8px;
+      position: relative;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .chosen-container-single .chosen-single span {
+      display: block;
+      margin-right: 26px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .chosen-container-single .chosen-single abbr {
+      background: url("chosen-sprite.png") right top no-repeat;
+      display: block;
+      font-size: 1px;
+      height: 10px;
+      position: absolute;
+      right: 26px;
+      top: 12px;
+      width: 12px;
+    }
+
+    .chosen-container-single .chosen-single abbr:hover {
+      background-position: right -11px;
+    }
+
+    .chosen-container-single .chosen-single.chosen-disabled .chosen-single abbr:hover {
+      background-position: right 2px;
+    }
+
+    .chosen-container-single .chosen-single div {
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 18px;
+    }
+
+    .chosen-container-single .chosen-single div b {
+      background: url("chosen-sprite.png") no-repeat 0 7px;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .chosen-container-single .chosen-default {
+      color: #777777;
+    }
+
+    .chosen-container-single .chosen-search {
+      margin: 0;
+      padding: 3px 4px;
+      position: relative;
+      white-space: nowrap;
+      z-index: 1000;
+    }
+
+    .chosen-container-single .chosen-search input[type="text"] {
+      background: url("chosen-sprite.png") no-repeat 100% -20px, #ffffff;
+      border: 1px solid #cccccc;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      margin: 1px 0;
+      padding: 4px 20px 4px 4px;
+      width: 100%;
+    }
+
+    .chosen-container-single .chosen-drop {
+      margin-top: -1px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+    }
+
+    .chosen-container-single-nosearch .chosen-search input {
+      position: absolute;
+      left: -9000px;
+    }
+
+    .chosen-container-multi .chosen-choices {
+      background-color: #ffffff;
+      border: 1px solid #cccccc;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      cursor: text;
+      height: auto !important;
+      height: 1%;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      position: relative;
+    }
+
+    .chosen-container-multi .chosen-choices li {
+      float: left;
+      list-style: none;
+    }
+
+    .chosen-container-multi .chosen-choices .search-field {
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    .chosen-container-multi .chosen-choices .search-field input[type="text"] {
+      background: transparent !important;
+      border: 0 !important;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      color: #555555;
+      height: 32px;
+      margin: 0;
+      padding: 4px;
+      outline: 0;
+    }
+
+    .chosen-container-multi .chosen-choices .search-field .default {
+      color: #999;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice {
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding;
+      background-clip: padding-box;
+      background-color: #eeeeee;
+      border: 1px solid #cccccc;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      background-image: -webkit-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+      background-image: -o-linear-gradient(top, #ffffff 0%, #eeeeee 100%);
+      background-image: linear-gradient(to bottom, #ffffff 0%, #eeeeee 100%);
+      background-repeat: repeat-x;
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffeeeeee', GradientType=0);
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      color: #333333;
+      cursor: default;
+      line-height: 13px;
+      margin: 6px 0 3px 5px;
+      padding: 3px 20px 3px 5px;
+      position: relative;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice .search-choice-close {
+      background: url("chosen-sprite.png") right top no-repeat;
+      display: block;
+      font-size: 1px;
+      height: 10px;
+      position: absolute;
+      right: 4px;
+      top: 5px;
+      width: 12px;
+      cursor: pointer;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice .search-choice-close:hover {
+      background-position: right -11px;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice-focus {
+      background: #d4d4d4;
+    }
+
+    .chosen-container-multi .chosen-choices .search-choice-focus .search-choice-close {
+      background-position: right -11px;
+    }
+
+    .chosen-container-multi .chosen-results {
+      margin: 0 0 0 0;
+      padding: 0;
+    }
+
+    .chosen-container-multi .chosen-drop .result-selected {
+      display: none;
+    }
+
+    .chosen-container-active .chosen-single {
+      border: 1px solid #66afe9;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      -webkit-transition: border linear .2s, box-shadow linear .2s;
+      -o-transition: border linear .2s, box-shadow linear .2s;
+      transition: border linear .2s, box-shadow linear .2s;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-single {
+      background-color: #ffffff;
+      border: 1px solid #66afe9;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      -webkit-transition: border linear .2s, box-shadow linear .2s;
+      -o-transition: border linear .2s, box-shadow linear .2s;
+      transition: border linear .2s, box-shadow linear .2s;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-single div {
+      background: transparent;
+      border-left: none;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-single div b {
+      background-position: -18px 7px;
+    }
+
+    .chosen-container-active .chosen-choices {
+      border: 1px solid #66afe9;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6);
+      -webkit-transition: border linear .2s, box-shadow linear .2s;
+      -o-transition: border linear .2s, box-shadow linear .2s;
+      transition: border linear .2s, box-shadow linear .2s;
+    }
+
+    .chosen-container-active .chosen-choices .search-field input[type="text"] {
+      color: #111 !important;
+    }
+
+    .chosen-container-active.chosen-with-drop .chosen-choices {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .chosen-disabled {
+      cursor: default;
+      opacity: 0.5 !important;
+    }
+
+    .chosen-disabled .chosen-single {
+      cursor: default;
+    }
+
+    .chosen-disabled .chosen-choices .search-choice .search-choice-close {
+      cursor: default;
+    }
+
+    .chosen-rtl {
+      text-align: right;
+    }
+
+    .chosen-rtl .chosen-single {
+      padding: 0 8px 0 0;
+      overflow: visible;
+    }
+
+    .chosen-rtl .chosen-single span {
+      margin-left: 26px;
+      margin-right: 0;
+      direction: rtl;
+    }
+
+    .chosen-rtl .chosen-single div {
+      left: 7px;
+      right: auto;
+    }
+
+    .chosen-rtl .chosen-single abbr {
+      left: 26px;
+      right: auto;
+    }
+
+    .chosen-rtl .chosen-choices .search-field input[type="text"] {
+      direction: rtl;
+    }
+
+    .chosen-rtl .chosen-choices li {
+      float: right;
+    }
+
+    .chosen-rtl .chosen-choices .search-choice {
+      margin: 6px 5px 3px 0;
+      padding: 3px 5px 3px 19px;
+    }
+
+    .chosen-rtl .chosen-choices .search-choice .search-choice-close {
+      background-position: right top;
+      left: 4px;
+      right: auto;
+    }
+
+    .chosen-rtl.chosen-container-single .chosen-results {
+      margin: 0 0 4px 4px;
+      padding: 0 4px 0 0;
+    }
+
+    .chosen-rtl .chosen-results .group-option {
+      padding-left: 0;
+      padding-right: 15px;
+    }
+
+    .chosen-rtl.chosen-container-active.chosen-with-drop .chosen-single div {
+      border-right: none;
+    }
+
+    .chosen-rtl .chosen-search input[type="text"] {
+      background: url("chosen-sprite.png") no-repeat -28px -20px, #ffffff;
+      direction: rtl;
+      padding: 4px 5px 4px 20px;
+    }
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-resolution: 144dpi) {
+
+      .chosen-rtl .chosen-search input[type="text"],
+      .chosen-container-single .chosen-single abbr,
+      .chosen-container-single .chosen-single div b,
+      .chosen-container-single .chosen-search input[type="text"],
+      .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
+      .chosen-container .chosen-results-scroll-down span,
+      .chosen-container .chosen-results-scroll-up span {
+        background-image: url("chosen-sprite@2x.png") !important;
+        background-size: 52px 37px !important;
+        background-repeat: no-repeat !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header-left">
+      <div class="menu-icon dw dw-menu"></div>
+
+
+    </div>
+    <div class="header-right">
+
+
+      <div class="user-info-dropdown">
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            <span class="user-icon">
+              <img src="vendors/images/photo1.jpg" alt="">
+            </span>
+            <span class="user-name">Person Name</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+            <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+            <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
+            <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+            <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="header-right">
+
+
+      <div class="user-info-dropdown">
+        <div class="dropdown">
+          <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            {% comment %} <span class="user-icon">
+              <img src="vendors/images/photo1.jpg" alt="">
+            </span> {% endcomment %}
+            <span class="user-name">Person Name</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+            <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
+            <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
+            <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+            <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="left-side-bar">
+    <div class="brand-logo">
+      <a href="index.html">
+        <img src="{% static 'home_page/vendors/images/deskapp-logo.svg' %}" alt="" class="dark-logo">
+        <img src="{% static 'home_page/vendors/images/logo.png' %}" alt="" class="light-logo">
+      </a>
+      <div class="close-sidebar" data-toggle="left-sidebar-close">
+        <i class="ion-close-round"></i>
+      </div>
+    </div>
+    <div class="menu-block customscroll">
+      <div class="sidebar-menu">
+        <ul id="accordion-menu">
+          <li class="dropdown">
+            <a href="{% url 'home_page' %}" class="dropdown-toggle no-arrow">
+              <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-list3"></span><span class="mtext">Appointments</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="{% url 'followup' %}">Follow-Up Appointments</a></li>
+              <li><a href="{% url 'appointment_status' %}">Appointment Status</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{% url 'billing' %}" class="dropdown-toggle no-arrow">
+              <span class="micon dw dw-apartment"></span><span class="mtext">Billing And Taxes</span>
+            </a>
+          </li>
+
+
+          <li class="dropdown">
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-settings2"></span><span class="mtext">Settings</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="basic-table.html">Update Doctor And Specality</a></li>
+            </ul>
+            <ul class="submenu">
+              <li><a href="{% url 'changepassword' %}">Update Password</a></li>
+
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:;" class="dropdown-toggle">
+              <span class="micon dw dw-edit-2"></span><span class="mtext">Documentation</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="introduction.html">Introduction</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- js -->
+  <script src="{% static 'home_page/vendors/scripts/core.js' %}"></script>
+  <script src="{% static 'home_page/vendors/scripts/script.min.js' %}"></script>
+  <script src="{% static 'home_page/vendors/scripts/process.js' %}"></script>
+  <script src="{% static 'home_page/vendors/scripts/layout-settings.js' %}"></script>
+  <script src="{% static 'home_page/src/plugins/fullcalendar/fullcalendar.min.js' %}"></script>
+  <script src="{% static 'home_page/vendors/scripts/calendar-setting.js' %}"></script>
+
+
+
+</body>
+
+</html>

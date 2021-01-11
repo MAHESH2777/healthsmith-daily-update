@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Basic Page Info -->
+	<meta charset="utf-8">
+	<title>Healthsmith</title>
+
+	<!-- Site favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo2.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo2.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo2.png">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+		rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
+	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/jquery.steps.css">
+	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+	<script>
+		function checkDate() {
+			var selectedText = document.getElementById('datepicker').value;
+			var selectedDate = new Date(selectedText);
+			var now = new Date();
+			if (selectedDate < now) {
+				alert("Date must be in the future");
+			}
+		}
+	</script>
+
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-119386393-1');
+	</script>
+	<style>
+		.btn-primary:not(:disabled):not(.disabled).active,
+		.btn-primary:not(:disabled):not(.disabled):active,
+		.show>.btn-primary.dropdown-toggle {
+			color: #fff;
+			background-color: #f4bc1d !important;
+			border-color: #f4bc1d !important;
+		}
+
+		.btn-primary:not(:disabled):not(.disabled),
+		.btn-primary:not(:disabled):not(.disabled),
+		.show>.btn-primary.dropdown-toggle {
+			color: #fff;
+			background-color: #f12828 !important;
+			border-color: #f12828 !important;
+		}
+
+		.mbtn {
+			background-color: #f4bc1d;
+			color: white;
+			/* border: 2px solid red; */
+			border-radius: 8px;
+			padding: 10px 16px;
+			font-weight: 500;
+		}
+
+		form#add-event {
+			width: 700px !important;
+		}
+
+		
+		.hm-gradient {
+			background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+		}
+
+		.darken-grey-text {
+			color: #2E2E2E;
+		}
+
+		.danger-text {
+			color: #ff3547;
+		}
+
+		.default-text {
+			color: #2BBBAD;
+		}
+
+		.info-text {
+			color: #33b5e5;
+		}
+
+		.form-white .md-form label {
+			color: #fff;
+		}
+
+		.form-white input[type=text]:focus:not([readonly]) {
+			border-bottom: 1px solid #fff;
+			-webkit-box-shadow: 0 1px 0 0 #fff;
+			box-shadow: 0 1px 0 0 #fff;
+		}
+
+		.form-white input[type=text]:focus:not([readonly])+label {
+			color: #fff;
+		}
+
+		.form-white input[type=password]:focus:not([readonly]) {
+			border-bottom: 1px solid #fff;
+			-webkit-box-shadow: 0 1px 0 0 #fff;
+			box-shadow: 0 1px 0 0 #fff;
+		}
+
+		.form-white input[type=password]:focus:not([readonly])+label {
+			color: #fff;
+		}
+
+		.form-white input[type=password],
+		.form-white input[type=text] {
+			border-bottom: 1px solid #fff;
+		}
+
+		.form-white .form-control:focus {
+			color: #fff;
+		}
+
+		.form-white .form-control {
+			color: #fff;
+		}
+
+		.form-white textarea.md-textarea:focus:not([readonly]) {
+			border-bottom: 1px solid #fff;
+			box-shadow: 0 1px 0 0 #fff;
+			color: #fff;
+		}
+
+		.form-white textarea.md-textarea {
+			border-bottom: 1px solid #fff;
+			color: #fff;
+		}
+
+		.form-white textarea.md-textarea:focus:not([readonly])+label {
+			color: #fff;
+		}
+
+		.ripe-malinka-gradient {
+			background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+		}
+
+		.near-moon-gradient {
+			background-image: linear-gradient(to bottom, #5ee7df 0%, #b490ca 100%);
+		}
+	</style>
+</head>
+
+<body>
+
+
+
+
+
+	<div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+
+			<div class="register-page-wrap d-flex align-items-center flex-wrap justify-content-center">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-md-6 col-lg-7">
+							<img src="vendors/images/pass2.png" class="img-fluid" alt="">
+						</div>
+						<div class="col-md-6 col-lg-5">
+
+							<div class="card">
+								<div class="card-body">
+									<!-- Form contact -->
+									<form class="pure-form">
+										<h2 class="text-center py-4 font-bold font-up danger-text">Change Password</h2>
+										<div class="md-form">
+											<i class="fa fa-key"></i> &nbsp;<label for="form31">Enter your new
+												password</label>
+											<input type="password" id="password" class="form-control" required>
+
+										</div><br>
+										<div class="md-form">
+											<i class="fa fa-key"></i>&nbsp; <label for="form21">confirm your
+												password</label>
+											<input type="password" id="confirm_password" class="form-control" required>
+
+										</div>
+										<br>
+
+										<div class="text-center">
+											<button class="btn btn-outline-danger btn-lg">Send</button>
+										</div>
+									</form>
+									<!-- Form contact -->
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				© Healthsmith 2020. All Rights Reserved
+			</div>
+		</div>
+	</div>
+
+
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/jquery-steps/jquery.steps.js"></script>
+	<script src="vendors/scripts/steps-setting.js"></script>
+	<script>
+		var password = document.getElementById("password")
+			, confirm_password = document.getElementById("confirm_password");
+
+		function validatePassword() {
+			if (password.value != confirm_password.value) {
+				confirm_password.setCustomValidity("Passwords Don't Match");
+			} else {
+				confirm_password.setCustomValidity('');
+			}
+		}
+
+		password.onchange = validatePassword;
+		confirm_password.onkeyup = validatePassword;
+	</script>
+</body>
+
+</html>
